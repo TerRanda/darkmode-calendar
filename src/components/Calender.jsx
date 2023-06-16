@@ -49,7 +49,19 @@ function Calender(props) {
             Array(lastDate).fill().map((_, arr) => {
               return(
 
-              <li key={arr} style={ arr === new Date().getDate()-1 && month === new Date().getMonth() ? {background: 'lightblue'} : null}>{arr + 1}</li> 
+              <li key={arr} style={ arr === new Date().getDate()-1 
+                && month === new Date().getMonth() 
+                && year === new Date().getFullYear() 
+                ? {background: 'lightblue'} : null }
+                //클래스 이름에도 삼항연산자 사용 가능.
+                className={
+                  new Date(year, month, arr + 1).getDay() === 0 ||
+                  new Date(year, month, arr + 1).getDay() === 6
+                  ? 'holiday' : ''
+                }
+                >
+                  {arr + 1}
+                  </li> 
               
               )
             })
