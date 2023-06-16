@@ -35,7 +35,6 @@ function App() {
     <>
       
       <div className='calender'>
-        <Header />
         <Calender year={year} month={month} day={day}/>
       </div>
       <div>
