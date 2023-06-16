@@ -6,22 +6,41 @@ import Calender from './components/Calender'
 import './App.css'
 
 function App() {
+  const[ year, setYear ] = useState(new Date().getFullYear());
+  const[ month, setMonth ] = useState(new Date().getMonth());
+  const[ day, setDay ] = useState(new Date().getDate());
+  //다음달 버튼
+  const nextMonth = () => {
+    if(month == 11){
+      setMonth(0); //1월
+      setYear(year + 1); //다음년도
+      return;
+    }
+      setMonth(month + 1);
+    
+   
+  }
 
-  
-   const changeMonth = () => {
-
-   }
-  
+  //이전달버튼
+  const prevMonth = () => {
+    if(month == 0) {
+      setMonth(11);
+      setYear(year -1)
+    } else{
+      setMonth(month -1);
+    }
+   
+  }
   return (
     <>
-      <h1>Calender App</h1>
+      
       <div className='calender'>
         <Header />
-        <Calender />
+        <Calender year={year} month={month} day={day}/>
       </div>
       <div>
-        <button onClick={changeMonth}>Prev</button>
-        <button onClick={changeMonth}>Next</button>
+        <button onClick={() => {prevMonth()}}>Prev</button>
+        <button onClick={() => {nextMonth()}}>Next</button>
       </div>
     </>
   )

@@ -3,7 +3,7 @@ import '/src/App.css'
 
 function Header() {
   return (
-    <div>Header</div>
+    <h1>Calender App</h1>
   )
 }
 
